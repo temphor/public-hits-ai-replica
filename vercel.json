@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "api/user.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/user",
+      "dest": "/api/user.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/user.js"
+    }
+  ]
+}
