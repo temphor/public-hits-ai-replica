@@ -6,12 +6,12 @@
   },
   "routes": [
     {
-      "src": "/api/user",
-      "dest": "/api/user.js"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/user.js"
+      "dest": "/api/user"
     }
   ]
 }
