@@ -1,0 +1,12 @@
+{
+  "name": "roblox-webhook-relay",
+  "version": "1.0.0",
+  "description": "Roblox exploit webhook relay for Vercel",
+  "main": "api/user.js",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "scripts": {
+    "start": "vercel dev"
+  }
+}
